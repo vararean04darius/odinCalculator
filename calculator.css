@@ -1,13 +1,110 @@
 body {
-    background-color: darkgray;
+    background-color: rgb(116, 116, 116);
+    margin: 0;
 }
 
 button {
-    border-color: black;
     border-style: solid;
-    background-color: chartreuse;
-    border-radius: 15px;
-    width: 200px;
-    height: 100px;
-    font-size: 24px;
+    background-color: goldenrod;
+    color: white;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    width: 90px;
+    height: 115px;
+    font-size: 20px;
+    font-weight: 700;
+    color:black;
+}
+
+button:hover{
+    background-color:orange;
+}
+button:active{
+    background-color:burlywood;
+}
+
+.number{
+    background-color: coral;
+}
+
+.operator:hover{
+    background-color: gold;
+}
+.operator:active{
+    background-color:antiquewhite;
+}
+
+.row{
+    display:flex;
+}
+
+#display{
+    height: 80px;
+    width: 370px;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 50px;
+    font-weight: 700;
+    padding-top: 15px;
+}
+
+.mainpage{
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    min-height: 920px;
+    align-items: center;
+    justify-content:space-between;
+}
+
+#twobuttons{
+    display: flex;
+    flex-direction: column;
+    width: 90px;
+    height: 115px;
+    gap:5px;
+}
+
+#multiplication, #equals{
+    height: 55px;
+}
+
+.row{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+#container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: dodgerblue;
+    width: 400px;
+    height: 600px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: black;
+    gap:5px;
+}
+
+.header{
+    background-color: aquamarine;
+    width:auto;
+    height: auto;
+}
+
+.footer{
+    background-color: aquamarine;
 }

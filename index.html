@@ -8,8 +8,43 @@
     <link rel='stylesheet' type='text/css' media='screen' href='calculator.css'>
 </head>
 <body>
-    <button id="addition">Clicking me does nothing.</button>
-
-    <script src='calculator.js'></script>
+    <div class="mainpage">
+        <div></div>
+        <div id="container">
+            <div id="display"></div>
+            <div class="row" id="firstColumn">
+                <button id="one" class="number">1</button>
+                <button id="two" class="number">2</button>
+                <button id="three" class="number">3</button>
+                <button id="backspace" class="operator">←</button>
+            </div>
+            <div class="row" id="secondColumn">
+                <button id="four" class="number">4</button>
+                <button id="five" class="number">5</button>
+                <button id="six" class="number">6</button>
+                <div id="twobuttons">
+                    <button id="addition" class="operator">+</button>
+                    <button id="substraction" class="operator">-</button>
+                </div>
+            </div>
+            <div class="row" id="thirdColumn">
+                <button id="seven" class="number">7</button>
+                <button id="eight" class="number">8</button>
+                <button id="nine" class="number">9</button>
+                <button id="division" class="operator">:</button>
+            </div>
+            <div class="row" id="lastColumn">
+                <button id="clear" class="operator">CLEAR</button>
+                <button id="zero" class="number">0</button>
+                <button id="dot" class="operator">.</button>
+                <div id="twobuttons">
+                    <button id="multiplication" class="operator">x</button>
+                    <button id="equals" class="operator">=</button>
+                </div>
+            </div>
+        </div>
+        <div></div>
+    </div>
+    <script src='calculator.js' defer></script>
 </body>
 </html>
