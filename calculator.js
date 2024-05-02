@@ -104,7 +104,6 @@ function unBlockCalculator(){
 }
 
 function updateDisplay(){
-    console.log(currentDisplayed);
     if(justFinished == true && parseFloat(currentDisplayed) % 1 != 0){
         currentDisplayed = Math.round(parseFloat(currentDisplayed) * 100000) / 100000;
         display.textContent = currentDisplayed.toString().slice(0,9);
@@ -113,7 +112,7 @@ function updateDisplay(){
     }
 };
 
-oneButton.addEventListener("click", function() {
+function addNumberToDisplay(x){
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
@@ -123,159 +122,16 @@ oneButton.addEventListener("click", function() {
             updateDisplay();
         }
         if(currentDisplayed == '0'){
-            currentDisplayed = "1";
+            currentDisplayed = x.toString();
             updateDisplay();
         }else{
-            currentDisplayed += "1";
+            currentDisplayed += x.toString();
             updateDisplay();
         }
     }
-});
-twoButton.addEventListener("click", function() {
-    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
-        if(operatorSelected == true || justFinished == true){
-            currentDisplayed = '';
-            operatorSelected = false;
-            justFinished = false;
-            typingSecondNumber = false;
-            updateDisplay();
-        }
-        if(currentDisplayed == '0'){
-            currentDisplayed = "2";
-            updateDisplay();
-        }else{
-            currentDisplayed += "2";
-            updateDisplay();
-        }
-    }
-});
-threeButton.addEventListener("click", function() {
-    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
-        if(operatorSelected == true || justFinished == true){
-            currentDisplayed = '';
-            operatorSelected = false;
-            justFinished = false;
-            typingSecondNumber = false;
-            updateDisplay();
-        }
-        if(currentDisplayed == '0'){
-            currentDisplayed = "3";
-            updateDisplay();
-        }else{
-            currentDisplayed += "3";
-            updateDisplay();
-        }
-    }
-});
-fourButton.addEventListener("click", function() {
-    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
-        if(operatorSelected == true || justFinished == true){
-            currentDisplayed = '';
-            operatorSelected = false;
-            justFinished = false;
-            typingSecondNumber = false;
-            updateDisplay();
-        }
-        if(currentDisplayed == '0'){
-            currentDisplayed = "4";
-            updateDisplay();
-        }else{
-            currentDisplayed += "4";
-            updateDisplay();
-        }
-    }
-});
-fiveButton.addEventListener("click", function() {
-    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
-        if(operatorSelected == true || justFinished == true){
-            currentDisplayed = '';
-            operatorSelected = false;
-            justFinished = false;
-            typingSecondNumber = false;
-            updateDisplay();
-        }
-        if(currentDisplayed == '0'){
-            currentDisplayed = "5";
-            updateDisplay();
-        }else{
-            currentDisplayed += "5";
-            updateDisplay();
-        }
-    }
-});
-sixButton.addEventListener("click", function() {
-    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
-        if(operatorSelected == true || justFinished == true){
-            currentDisplayed = '';
-            operatorSelected = false;
-            justFinished = false;
-            typingSecondNumber = false;
-            updateDisplay();
-        }
-        if(currentDisplayed == '0'){
-            currentDisplayed = "6";
-            updateDisplay();
-        }else{
-            currentDisplayed += "6";
-            updateDisplay();
-        }
-    }
-});
-sevenButton.addEventListener("click", function() {
-    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
-        if(operatorSelected == true || justFinished == true){
-            currentDisplayed = '';
-            operatorSelected = false;
-            justFinished = false;
-            typingSecondNumber = false;
-            updateDisplay();
-        }
-        if(currentDisplayed == '0'){
-            currentDisplayed = "7";
-            updateDisplay();
-        }else{
-            currentDisplayed += "7";
-            updateDisplay();
-        }
-    }
-});
-eightButton.addEventListener("click", function() {
-    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
-        if(operatorSelected == true || justFinished == true){
-            currentDisplayed = '';
-            operatorSelected = false;
-            justFinished = false;
-            typingSecondNumber = false;
-            updateDisplay();
-        }
-        if(currentDisplayed == '0'){
-            currentDisplayed = "8";
-            updateDisplay();
-        }else{
-            currentDisplayed += "8";
-            updateDisplay();
-        }
-    }
-});
-nineButton.addEventListener("click", function() {
-    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
-        if(operatorSelected == true || justFinished == true){
-            currentDisplayed = '';
-            operatorSelected = false;
-            justFinished = false;
-            typingSecondNumber = false;
-            updateDisplay();
-        }
-        if(currentDisplayed == '0'){
-            currentDisplayed = "9";
-            updateDisplay();
-        }else{
-            currentDisplayed += "9";
-            updateDisplay();
-        }
-    }
-});
-zeroButton.addEventListener("click", function() {
+}
+
+function addZeroToDisplay(){
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
@@ -289,9 +145,9 @@ zeroButton.addEventListener("click", function() {
         }
         updateDisplay();
     }
-});
+}
 
-calculateButton.addEventListener("click", function() {
+function calculateFunction(){
     if(operator !== ''){
         secondNumber = parseFloat(currentDisplayed);
         if(operate(operator, firstNumber, secondNumber) === "ERROR" || isNaN(operate(operator, firstNumber, secondNumber))){
@@ -306,13 +162,9 @@ calculateButton.addEventListener("click", function() {
         justFinished = true;
         updateDisplay();
     }
-});
+}
 
-clearButton.addEventListener("click", function() {
-    clear();
-});
-
-additionButton.addEventListener("click", function() {
+function addFunction(){
     if(operator === ''){
         secondNumber = firstNumber = parseFloat(currentDisplayed);
     }else{
@@ -325,9 +177,9 @@ additionButton.addEventListener("click", function() {
     typingSecondNumber = true;
     operatorSelected = true;
     dotUsed = false;
-});
+}
 
-substractionButton.addEventListener("click", function() { 
+function substactFunction(){
     if(operator === ''){
         secondNumber = firstNumber = parseFloat(currentDisplayed);
     }else{
@@ -340,9 +192,9 @@ substractionButton.addEventListener("click", function() {
     typingSecondNumber = true;
     operatorSelected = true;
     dotUsed = false;
-});
+}
 
-multiplicationButton.addEventListener("click", function() {
+function multiplicationFunction(){
     if(operator === ''){
         secondNumber = firstNumber = parseFloat(currentDisplayed);
     }else{
@@ -355,9 +207,9 @@ multiplicationButton.addEventListener("click", function() {
     typingSecondNumber = true;
     operatorSelected = true;
     dotUsed = false;
-});
+}
 
-divisionButton.addEventListener("click", function() {
+function divisionFunction(){
     if(operator === ''){
         secondNumber = firstNumber = parseFloat(currentDisplayed);
     }else{
@@ -370,9 +222,9 @@ divisionButton.addEventListener("click", function() {
     typingSecondNumber = true;
     operatorSelected = true;
     dotUsed = false;
-});
+}
 
-dotButton.addEventListener("click", function() {
+function dotFunction(){
     if(dotUsed != true){
         if(currentDisplayed.toString().length == 0 || operatorSelected == true || justFinished == true){
             currentDisplayed = 0;
@@ -383,9 +235,9 @@ dotButton.addEventListener("click", function() {
         updateDisplay();
     }
     dotUsed = true;
-});
+}
 
-backspaceButton.addEventListener("click", function() {
+function removeFunction(){
     if(currentDisplayed.length >= 1){
         if(currentDisplayed.charAt(currentDisplayed.length - 1) == '.'){
             currentDisplayed = currentDisplayed.slice(0, -1);
@@ -396,4 +248,82 @@ backspaceButton.addEventListener("click", function() {
             updateDisplay();
         }
     }
-});
+}
+
+oneButton.addEventListener("click", function() {addNumberToDisplay(1)});
+twoButton.addEventListener("click", function() {addNumberToDisplay(2)});
+threeButton.addEventListener("click", function() {addNumberToDisplay(3)});
+fourButton.addEventListener("click", function() {addNumberToDisplay(4)});
+fiveButton.addEventListener("click", function() {addNumberToDisplay(5)});
+sixButton.addEventListener("click", function() {addNumberToDisplay(6)});
+sevenButton.addEventListener("click", function() {addNumberToDisplay(7)});
+eightButton.addEventListener("click", function() {addNumberToDisplay(8)});
+nineButton.addEventListener("click", function() {addNumberToDisplay(9)});
+calculateButton.addEventListener("click", function() {calculateFunction()});
+zeroButton.addEventListener("click", function() {addZeroToDisplay()});
+clearButton.addEventListener("click", function() {clear()});
+additionButton.addEventListener("click", function() {addFunction()});
+substractionButton.addEventListener("click", function() {substactFunction()});
+multiplicationButton.addEventListener("click", function() {multiplicationFunction()});
+divisionButton.addEventListener("click", function() {divisionFunction()});
+dotButton.addEventListener("click", function() {dotFunction()});
+backspaceButton.addEventListener("click", function() {removeFunction()});
+
+//Below this part there's the keyboard events
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "1") {
+        addNumberToDisplay(1);
+    }
+    if (event.key === "2") {
+        addNumberToDisplay(2);
+    }
+    if (event.key === "3") {
+        addNumberToDisplay(3);
+    }
+    if (event.key === "4") {
+        addNumberToDisplay(4);
+    }
+    if (event.key === "5") {
+        addNumberToDisplay(5);
+    }
+    if (event.key === "6") {
+        addNumberToDisplay(6);
+    }
+    if (event.key === "7") {
+        addNumberToDisplay(7);
+    }
+    if (event.key === "8") {
+        addNumberToDisplay(8);
+    }
+    if (event.key === "9") {
+        addNumberToDisplay(9);
+    }
+    if (event.key === "0") {
+        addZeroToDisplay();
+    }
+    if (event.key === "+"){
+        addFunction();
+    }
+    if (event.key === "-"){
+        substactFunction();
+    }
+    if (event.key === "*" || event.key === "x"){
+        multiplicationFunction();
+    }
+    if (event.key === "/" || event.key === ":"){
+        divisionFunction();
+    }
+    if (event.key === "Enter"){
+        calculateFunction();
+    }
+    if (event.key === "Backspace"){
+        removeFunction();
+    }
+    if (event.key === "Delete"){
+        clear();
+    }
+    if (event.key === "."){
+        dotFunction();
+    }
+  });
