@@ -26,6 +26,7 @@ button:active{
 
 .number{
     background-color: coral;
+    font-size: 30px;
 }
 
 .operator:hover{

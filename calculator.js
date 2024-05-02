@@ -8,7 +8,10 @@ function multiplication(firstElement, secondElement){
     return firstElement * secondElement;
 }
 function division(firstElement, secondElement){
-    return firstElement / secondElement;
+    if(firstElement == 0 || secondElement == 0)
+    {
+        return "ERROR";
+    }else return firstElement / secondElement;
 }
 
 function operate(operator, firstElement, secondElement){
@@ -25,6 +28,7 @@ let currentDisplayed = '';
 let operatorSelected = false;
 let dotUsed = false;
 let justFinished = false;
+let typingSecondNumber = false;
 const display = document.getElementById("display");
 const container = document.getElementById("container");
 const additionButton = document.getElementById("addition");
@@ -54,21 +58,62 @@ function clear(){
     dotUsed = false;
     operatorSelected = false;
     updateDisplay();
+    unBlockCalculator();
 };
+
+function blockCalculator(){
+    additionButton.disabled = true;
+    substractionButton.disabled = true;
+    multiplicationButton.disabled = true;
+    divisionButton.disabled = true;
+    calculateButton.disabled = true;
+    oneButton.disabled = true;
+    twoButton.disabled = true;
+    threeButton.disabled = true;
+    fourButton.disabled = true;
+    fiveButton.disabled = true;
+    sixButton.disabled = true;
+    sevenButton.disabled = true;
+    eightButton.disabled = true;
+    nineButton.disabled = true;
+    zeroButton.disabled = true;
+    dotButton.disabled = true;
+    backspaceButton.disabled = true;
+}
+
+function unBlockCalculator(){
+    additionButton.disabled = false;
+    substractionButton.disabled = false;
+    multiplicationButton.disabled = false;
+    divisionButton.disabled = false;
+    calculateButton.disabled = false;
+    oneButton.disabled = false;
+    twoButton.disabled = false;
+    threeButton.disabled = false;
+    fourButton.disabled = false;
+    fiveButton.disabled = false;
+    sixButton.disabled = false;
+    sevenButton.disabled = false;
+    eightButton.disabled = false;
+    nineButton.disabled = false;
+    zeroButton.disabled = false;
+    dotButton.disabled = false;
+    backspaceButton.disabled = false;
+}
 
 function updateDisplay(){
     //parseFloat(currentDisplayed);
-    display.textContent = currentDisplayed;
-    console.log(currentDisplayed);
+    display.textContent = currentDisplayed.toString().slice(0,9);
 };
 
 oneButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
             justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "1";
@@ -80,12 +125,13 @@ oneButton.addEventListener("click", function() {
     }
 });
 twoButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
             justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "2";
@@ -97,12 +143,13 @@ twoButton.addEventListener("click", function() {
     }
 });
 threeButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
             justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "3";
@@ -114,12 +161,13 @@ threeButton.addEventListener("click", function() {
     }
 });
 fourButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
             justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "4";
@@ -131,11 +179,13 @@ fourButton.addEventListener("click", function() {
     }
 });
 fiveButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
+            justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "5";
@@ -147,12 +197,13 @@ fiveButton.addEventListener("click", function() {
     }
 });
 sixButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
             justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "6";
@@ -164,12 +215,13 @@ sixButton.addEventListener("click", function() {
     }
 });
 sevenButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
             justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "7";
@@ -181,12 +233,13 @@ sevenButton.addEventListener("click", function() {
     }
 });
 eightButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
             justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "8";
@@ -198,12 +251,13 @@ eightButton.addEventListener("click", function() {
     }
 });
 nineButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
             justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "9";
@@ -215,12 +269,13 @@ nineButton.addEventListener("click", function() {
     }
 });
 zeroButton.addEventListener("click", function() {
-    if(currentDisplayed.length < 9){
+    if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
             updateDisplay();
             operatorSelected = false;
             justFinished = false;
+            typingSecondNumber = false;
         }
         if(currentDisplayed != '0'){
             currentDisplayed += "0";
@@ -232,13 +287,16 @@ zeroButton.addEventListener("click", function() {
 calculateButton.addEventListener("click", function() {
     if(operator !== ''){
         secondNumber = parseFloat(currentDisplayed);
-        firstNumber = currentDisplayed = operate(operator, firstNumber, secondNumber);
+        if(operate(operator, firstNumber, secondNumber) === "ERROR" || isNaN(operate(operator, firstNumber, secondNumber))){
+            currentDisplayed = operate(operator, firstNumber, secondNumber);
+            blockCalculator();
+        }else currentDisplayed = parseFloat(operate(operator, firstNumber, secondNumber));
+        firstNumber = currentDisplayed;
         secondNumber = 0;
         operatorSelected = false;
         dotUsed = false;
         operator = '';
         updateDisplay();
-        console.log("dupa ce am calculat, firstNumber: " + firstNumber + " si secondNumber: " + secondNumber);
         justFinished = true;
     }
 });
@@ -257,6 +315,7 @@ additionButton.addEventListener("click", function() {
             updateDisplay();
         }
     operator = "+";
+    typingSecondNumber = true;
     operatorSelected = true;
     dotUsed = false;
 });
@@ -271,6 +330,7 @@ substractionButton.addEventListener("click", function() {
             updateDisplay();
         }
     operator = "-";
+    typingSecondNumber = true;
     operatorSelected = true;
     dotUsed = false;
 });
@@ -285,6 +345,7 @@ multiplicationButton.addEventListener("click", function() {
             updateDisplay();
         }
     operator = "x";
+    typingSecondNumber = true;
     operatorSelected = true;
     dotUsed = false;
 });
@@ -299,15 +360,17 @@ divisionButton.addEventListener("click", function() {
             updateDisplay();
         }
     operator = "/";
+    typingSecondNumber = true;
     operatorSelected = true;
     dotUsed = false;
 });
 
 dotButton.addEventListener("click", function() {
     if(dotUsed != true){
-        if(currentDisplayed.length == 0 || operatorSelected == true){
+        if(currentDisplayed.toString().length == 0 || operatorSelected == true || justFinished == true){
             currentDisplayed = 0;
             operatorSelected = false;
+            justFinished = false;
         }
         currentDisplayed += ".";
         updateDisplay();
@@ -317,7 +380,6 @@ dotButton.addEventListener("click", function() {
 
 backspaceButton.addEventListener("click", function() {
     if(currentDisplayed.length >= 1){
-        console.log(currentDisplayed.charAt(currentDisplayed.length - 1));
         if(currentDisplayed.charAt(currentDisplayed.length - 1) == '.'){
             currentDisplayed = currentDisplayed.slice(0, -1);
             updateDisplay();
