@@ -57,6 +57,8 @@ function clear(){
     firstNumber = secondNumber = 0;
     dotUsed = false;
     operatorSelected = false;
+    justFinished = false;
+    typingSecondNumber = false;
     updateDisplay();
     unBlockCalculator();
 };
@@ -102,18 +104,23 @@ function unBlockCalculator(){
 }
 
 function updateDisplay(){
-    //parseFloat(currentDisplayed);
-    display.textContent = currentDisplayed.toString().slice(0,9);
+    console.log(currentDisplayed);
+    if(justFinished == true && parseFloat(currentDisplayed) % 1 != 0){
+        currentDisplayed = Math.round(parseFloat(currentDisplayed) * 100000) / 100000;
+        display.textContent = currentDisplayed.toString().slice(0,9);
+    }else{
+        display.textContent = currentDisplayed.toString().slice(0,9);
+    }
 };
 
 oneButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "1";
@@ -128,10 +135,10 @@ twoButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "2";
@@ -146,10 +153,10 @@ threeButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "3";
@@ -164,10 +171,10 @@ fourButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "4";
@@ -182,10 +189,10 @@ fiveButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "5";
@@ -200,10 +207,10 @@ sixButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "6";
@@ -218,10 +225,10 @@ sevenButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "7";
@@ -236,10 +243,10 @@ eightButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "8";
@@ -254,10 +261,10 @@ nineButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed == '0'){
             currentDisplayed = "9";
@@ -272,10 +279,10 @@ zeroButton.addEventListener("click", function() {
     if(currentDisplayed.toString().length < 9 || typingSecondNumber == true){
         if(operatorSelected == true || justFinished == true){
             currentDisplayed = '';
-            updateDisplay();
             operatorSelected = false;
             justFinished = false;
             typingSecondNumber = false;
+            updateDisplay();
         }
         if(currentDisplayed != '0'){
             currentDisplayed += "0";
@@ -296,8 +303,8 @@ calculateButton.addEventListener("click", function() {
         operatorSelected = false;
         dotUsed = false;
         operator = '';
-        updateDisplay();
         justFinished = true;
+        updateDisplay();
     }
 });
 
